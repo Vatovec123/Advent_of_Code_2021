@@ -1,9 +1,14 @@
+let ime_datoteke = "day_2/day_2.in"
+
+
+
+
 let read_file filename = 
   let lines = ref [] in
   let chan = open_in filename in
   try
     while true; do
-      lines := int_of_string (input_line chan) :: !lines
+      lines := input_line chan :: !lines
     done; !lines
   with End_of_file ->
     close_in chan;
