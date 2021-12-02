@@ -1,4 +1,3 @@
-
 let read_file filename = 
   let lines = ref [] in
   let chan = open_in filename in
@@ -76,7 +75,7 @@ let koliko_vsot_je_vecjih sez   =
   aux 0 sez
 
 
-
+(*--------------------------------------------------------------------------------------------------------------------------------*)
 
 let naloga1 vsebina_datoteke =  koliko_stevil_je_vecjih ( vsebina_datoteke) 
 let naloga2 vsebina_datoteke = koliko_vsot_je_vecjih (vsebina_datoteke)

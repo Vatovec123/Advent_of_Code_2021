@@ -47,9 +47,29 @@ let zmnozek (x, y) = x * y
 
 let koncni_zmnozek_pozicije sez  = zmnozek (poisci_koncno_pozicijo( loci_premik_in_stevilo_premikov sez))
 
+(*-------------------------------------------------------------------------------------------------------------------------------------------*)
 
+let poisci_koncno_pozicijo_drugi_primer sez =
+  let rec aux acc1 acc2 acc3 sez' =
+    match sez' with
+    | [] -> (acc1,acc2,acc3)
+    |(x, y) :: xs ->
+      match x with
+      | "forward" -> aux (y + acc1) acc2 ((y * acc2) +acc3) xs
+      | "up" -> aux acc1 (acc2 - y) acc3 xs
+      | "down" -> aux acc1 (acc2 + y) acc3 xs
+      | _ -> aux acc1 acc2 acc3 xs
+    in
+    aux 0 0 0 sez
 
-let naloga1 vsebina_datoteke =  koncni_zmnozek_pozicije( vsebina_datoteke) 
+let zmnozek_drugi_primer (x, y, z) = x * z
+
+let koncni_zmnozek_pozicije_drugi_primer sez  = zmnozek_drugi_primer (poisci_koncno_pozicijo_drugi_primer( loci_premik_in_stevilo_premikov sez))
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------*)
+
+let naloga1 vsebina_datoteke =  koncni_zmnozek_pozicije (vsebina_datoteke) 
+let naloga2 vsebina_datoteke = koncni_zmnozek_pozicije_drugi_primer (vsebina_datoteke)
 
     
 let _ =
@@ -60,5 +80,17 @@ let _ =
     in
     let vsebina_datoteke = read_file "day_2/day_2.in" in
     let odgovor1 = string_of_int (naloga1 vsebina_datoteke)
+    and odgovor2 =string_of_int (naloga2 vsebina_datoteke)
     in
-    izpisi_datoteko "day_2/day_2_1.out" odgovor1 
+    izpisi_datoteko "day_2/day_2_1.out" odgovor1;
+    izpisi_datoteko "day_2/day_2_2.out" odgovor2
+
+ (* ["forward 5"; "down 5"; "forward 8"; "up 3"; "down 8"; "forward 2"]*)
+ (* ["forward 5"; "down 5"; "forward 8"; "up 3"; "down 8"; "forward 2"]*)
+
+ (*
+ [("forward", 5); ("down", 5); ("forward", 8); ("up", 3); ("down", 8);
+ ("forward", 2)]
+ *)
+    
+
