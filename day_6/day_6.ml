@@ -18,6 +18,7 @@ let rec po_i_dnevih stanje i =  if i = 0 then stanje else po_i_dnevih (spremeni 
  
 let naloga1 vsebina_datoteke = string_of_int (List.length (po_i_dnevih vsebina_datoteke 80))
 
+
 let _ =
   let preberi_datoteko ime_datoteke =
   let chan = open_in_bin ime_datoteke in
@@ -30,6 +31,9 @@ let _ =
       close_out chan
   in
   let vsebina_datoteke = read (preberi_datoteko ("day_6/day_6.in")) in
-  let odgovor1 = naloga1 vsebina_datoteke in
-  izpisi_datoteko "day_6/day_6_1.out"  odgovor1
+  let odgovor1 = naloga1 vsebina_datoteke 
+  in
+  izpisi_datoteko "day_6/day_6_1.out"  odgovor1;
+
+
 
